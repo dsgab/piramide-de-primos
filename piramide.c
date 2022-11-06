@@ -5,7 +5,6 @@ int piramide(int n);
 int tociente(int n);
 int* fatorar(int n);
 int* alocarVetor(int tamanhoDoVetor);
-void printarVetor(int *vetor);
 
 int main(void)
 {
@@ -75,14 +74,4 @@ int* fatorar(int n)
 int* alocarVetor(int tamanhoDoVetor)
 {
     return (int*) malloc(tamanhoDoVetor * sizeof(int));
-}
-
-void printarVetor(int *vetor)
-{
-    int i;
-    for(i = 0; vetor[i] != -1; i++)
-    {
-        printf("%d", vetor[i]);
-        vetor[i+1] != -1 ? printf(", ") : printf(".\n");
-    }
 }
