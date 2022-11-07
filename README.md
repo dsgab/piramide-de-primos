@@ -3,4 +3,4 @@ piramide.c &rarr; Algoritmo para calcular o número de elementos de certa linha 
 
 tociente.c &rarr; Algoritmo baseado na função tociente de Euler.
 
-Inspirado pelo seguinte vídeo: https://youtu.be/NsjsLwYRW8o
+Inspirado por [este vídeo](https://youtu.be/NsjsLwYRW8o).
