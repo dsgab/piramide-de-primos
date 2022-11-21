@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "./fatorar.c"
 
 int piramide(int n);
 int tociente(int n);
-int* fatorar(int n);
-int* alocarVetor(int tamanhoDoVetor);
 
 int main(void)
 {
@@ -26,11 +25,11 @@ int piramide(int n)
 
 int tociente(int n)
 {
-    int i, numerador = 1, denominador = 1;
-    int *vetorDeFatores = alocarVetor(n/2 + 1);
-    vetorDeFatores = fatorar(n);
+    int i, numerador = 1, denominador = 1, nFatores;
+    int *vetorDeFatores;
+    fatorar(n, &vetorDeFatores, &nFatores);
 
-    for(i = 0; vetorDeFatores[i] != -1; i++)
+    for(i = 0; i < nFatores; i++)
     {
         numerador *= vetorDeFatores[i] - 1;
         denominador *= vetorDeFatores[i];
@@ -38,40 +37,4 @@ int tociente(int n)
     free(vetorDeFatores);
     
     return n * numerador / denominador;
-}
-
-int* fatorar(int n)
-{
-    int divisorPrimo = 2, i = 0, ultimoDivisor = 0;
-    int *vetorDePrimos = alocarVetor(n/2 + 1);
-
-    if(n == 1)
-    {
-        vetorDePrimos[i] = 1;
-        vetorDePrimos[i+1] = -1;
-        return vetorDePrimos;
-    }
-
-    while(n > 1)
-    {
-        if(n % divisorPrimo == 0)
-        {
-            n /= divisorPrimo;
-            if(ultimoDivisor != divisorPrimo)
-            {
-                vetorDePrimos[i] = divisorPrimo;
-                i++;
-            }
-            ultimoDivisor = divisorPrimo;
-        }
-        else divisorPrimo++;
-    }
-    vetorDePrimos[i] = -1;
-
-    return vetorDePrimos;
-}
-
-int* alocarVetor(int tamanhoDoVetor)
-{
-    return (int*) malloc(tamanhoDoVetor * sizeof(int));
 }
